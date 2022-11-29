@@ -23,17 +23,16 @@ header{
 nav{
     display: flex;
     align-self: flex-start;
-    width: 3%;
+    width: 2%;
     flex: 1;
     min-height: 80vh;
     text-align: center;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
     border: 2px groove;
     padding: 10px;
     font-family: 'Lekton', Helvetica, Arial, sans-serif;
     box-shadow: 6px 4px 8px -2px;
-    align-items: center;
 }
 button{
     font-family: 'Lekton', Helvetica, Arial, sans-serif;
@@ -42,7 +41,6 @@ button{
     border-radius: 5px;
     font-size: medium;
     height: 50px;
-    width: 100%;
 }
 button:hover{
     background-color: aliceblue;
@@ -69,9 +67,10 @@ p{
     display: flex;
     align-items: center;
     text-align: center;
-    font-family: 'Lekton', Helvetica, Arial, sans-serif;
-}
+}    
 .close{
+    display: flex;
+    align-items: center;
     flex: 2;
     margin:8px;
     padding: 8px;
@@ -140,7 +139,6 @@ input[type=text] {
     box-shadow: 6px 4px 8px -2px;
 }
 input[type=submit] {
-    font-family: 'Lekton', Helvetica, Arial, sans-serif;
     border: none;
     padding: 2px 4px;
     text-decoration: none;
@@ -149,35 +147,48 @@ input[type=submit] {
 }
 
 /* table */ 
-#jokeDiv{
-    width: 50%;
-}
-#noteDiv{
-    width:50%;
-}
-#jokeList{
-    width: 100%;
-    display: table;
-}
-table, th, td {
-    border: 1px aliceblue;
-}
 table{
-    display: flex;
-    border-collapse: collapse;
-    width: 100%;
-    height: auto;
-    align-self:center;
-    border-style: groove;
-}  
-th{
-    border-style: outset;
+    border-style: none;
+    background-color: #4CAF50;
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+    border: 1px solid;
+    text-align: right;
+    box-shadow: 0 0 20px rgba(239, 239, 239, 0.15);
 }
-td{
-    border-style: double;
+tr,th,td{
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+    text-align: center;
+    padding: 8px;
+    background-color: #4CAF50;
+}    
+th, td {
+    border-bottom: thin solid #ddd;
+}
+.homeTabDiv{
+    height: fit-content;
+    display: grid;
+    margin: 4px;
+    padding: 4px;
+}
+#toDoDiv{
+    display: table;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 0 0 20px rgba(219, 211, 211, 0.15);
+    text-align: right;
+}
+tr:hover td {
+    background-color: #000;
+    color: #fff;
+}
+ 
+#delete,#edit{
+    text-align: right;
+    width: fit-content;
 }
 
-.homeTabDiv{
-    display: grid;
-    grid-template-columns: 2 50%;
+.deleteCell{
+    display: flex;
+    justify-content: end;
 }

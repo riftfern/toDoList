@@ -1,6 +1,6 @@
 import './styles.css';
 import {formModal, content, homeTabUI} from './UI.js';
-import {Joke, State, Formal} from './classicman.js';
+import {Joke, State, Formal, UI} from './classicman.js';
 
 function pageLoad(element){
     document.body.appendChild(element);
@@ -37,3 +37,21 @@ window.onclick = function(event){
     }
 }
 
+let btnNames = ['home', 'jokes', 'notes'];
+btnNames.forEach(btnName => {
+    let btn = document.getElementById(btnName);
+    btn.addEventListener('click', () => {
+        if(btn.id == 'home'){
+            UI.displayJokes();
+            UI.displayNotes();
+        }else if(btn.id == 'jokes'){
+            UI.removeNoteRows();
+        }else if(btn.id == 'notes'){
+            UI.removeJokeRows();
+        }
+    })
+})
+
+document.querySelector('#toDoDiv').addEventListener('click', (e) => {
+    UI.deleteTodo(e.target);
+});

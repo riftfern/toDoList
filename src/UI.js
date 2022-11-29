@@ -30,13 +30,20 @@ function content(){
     btn3.textContent = 'Jokes';
     btn4.textContent = 'Shows';
     btn5.textContent = 'New';
-    footer.textContent = 'THANK YOU ODIN PROJECT';
+    footer.textContent = 'THANK YOU ODIN PROJECT AND FONT AWESOME';
+
+    h1.innerHTML = `<i class="fa-solid fa-book">Stand Up Comedy NoteBook</i>`;
+    btn1.innerHTML = `<i class="fa-solid fa-house">Home</i>`;
+    btn2.innerHTML = `<i class="fa-regular fa-note-sticky">Notes</i>`
+    btn3.innerHTML = `<i class="fa-solid fa-face-laugh-squint">Jokes</i>`
+    btn5.innerHTML = `<i class="fa-solid fa-circle-plus">New</i>`;
+    footer.innerHTML = `<i class="fa-solid fa-socks">THANK YOU ODIN PROJECT AND FONT AWESOME</i>`
 
     header.appendChild(h1);
     nav.appendChild(btn1);
     nav.appendChild(btn2);
     nav.appendChild(btn3);
-    nav.appendChild(btn4);
+    //nav.appendChild(btn4);
     nav.appendChild(btn5);
 
     contentDiv.appendChild(nav);
@@ -74,6 +81,7 @@ function formModal(){
    PL.setAttribute('placeholder', 'Punchline');
 
    const jokeSubmit = document.createElement('input');
+   jokeSubmit.id = 'jokeSubmit';
    jokeSubmit.setAttribute('type', 'submit');
    jokeSubmit.setAttribute('value', 'Submit');
 
@@ -103,7 +111,9 @@ function formModal(){
    desc.setAttribute('type', 'text');
    desc.setAttribute('name', 'Description');
    desc.setAttribute('placeholder', 'Description');
+
    const noteSubmit = document.createElement('input');
+   noteSubmit.id = 'noteSubmit';
    noteSubmit.setAttribute('type', 'submit');
    noteSubmit.setAttribute('value', 'Submit');
    
@@ -122,7 +132,7 @@ function formModal(){
 
    const closeSpan = document.createElement('span');
    closeSpan.className = 'close';
-   closeSpan.innerText = 'X';
+   closeSpan.innerHTML = '<button id="close"><i class="fa-regular fa-circle-xmark">Close</i></button>';
    
    const formModalParagraph = document.createElement('p');
    formModalParagraph.className = 'formModalParagraph';
@@ -143,13 +153,10 @@ function homeTabUI(){
     const homeTabDiv = document.createElement('div');
     homeTabDiv.className = 'homeTabDiv';
 
-    const jokeDiv = document.createElement('div');
-    jokeDiv.id = 'jokeDiv';
-    const noteDiv = document.createElement('div');
-    noteDiv.id = 'noteDiv';
+    const toDoDiv = document.createElement('div');
+    toDoDiv.id = 'toDoDiv';
     
-    homeTabDiv.appendChild(jokeDiv);
-    homeTabDiv.appendChild(noteDiv);
+    homeTabDiv.appendChild(toDoDiv);
 
     section.appendChild(homeTabDiv);
     

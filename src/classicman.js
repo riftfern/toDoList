@@ -15,7 +15,6 @@ class State{
         let jokes = [];
         return jokes;
     }
-    
     static addJoke(joke){
         const jokes = State.getJokes();
         jokes.push(joke);
@@ -28,6 +27,7 @@ class State{
         const notes = State.getNotes();
         notes.push(note);
     }
+    static remove 
 }
 class Formal{
     static addJoke(){
@@ -48,7 +48,7 @@ class Formal{
             //add to State
             State.addJoke(joke);
         
-            Formal.clearFields();
+            Formal.clearJokeFields();
 
             modal.style.display = 'none';
         });
@@ -71,15 +71,19 @@ class Formal{
             //add to State
             State.addNote(note);
         
-            Formal.clearFields();
+            Formal.clearNoteFields();
 
             modal.style.display = 'none';
         });
     }
-    static clearFields(){
+    static clearJokeFields(){
         document.querySelector('#SU').value = '';
         document.querySelector('#PL').value = '';
-    }    
+    }
+    static clearNoteFields(){
+        document.querySelector('#title').value = '';
+        document.querySelector('#desc').value = '';
+    }
 }
 class UI{
     static displayJokes(){
@@ -87,38 +91,69 @@ class UI{
         jokes.forEach((joke) => UI.addJokeToList(joke));
     }
     static displayNotes(){
-        const jokes = State.getNotes();
+        const notes = State.getNotes();
         notes.forEach((note) => UI.addNoteToList(note));
     }
     static addJokeToList(joke){
-        const jokeDiv  = document.getElementById('jokeDiv');
-        const list = document.createElement('div');
-        list.id = 'jokeList';
-
+        const toDoDiv  = document.getElementById('toDoDiv');
+    
         const row = document.createElement('tr');
-
+        row.id = 'jokeRow';
+    
         row.innerHTML = `
-        <td>${joke.setup}</td>
-        <td>${joke.punchline}</td>
-        <td><p>X</p></td>`;
-
-        list.appendChild(row);
-        jokeDiv.appendChild(list);
+        <td class="titleCell">Joke:</td>
+        <td contentEditable>${joke.setup}</td>
+        <td contentEditable>${joke.punchline}</td>
+        <td class="deleteCell">
+            <button id="delete"><i class="fa-regular fa-circle-xmark">Delete</i></button>
+        </td>`;
+    
+        toDoDiv.appendChild(row);
     }
     static addNoteToList(note){
-        const noteDiv  = document.getElementById('noteDiv');
-        const list = document.createElement('div');
-        list.id = 'noteList';
-
+        const toDoDiv  = document.getElementById('toDoDiv');
+    
         const row = document.createElement('tr');
-
+        row.id = 'noteRow';
+    
         row.innerHTML = `
-        <td>${note.title}</td>
-        <td>${note.description}</td>
-        <td><p>X</p></td>`;
+        <td class="titleCell">Note:</td>
+        <td contentEditable>${note.title}</td>
+        <td contentEditable>${note.description}</td>
+        <td class="deleteCell">
+            <button id="delete"><i class="fa-regular fa-circle-xmark">Delete</i></button>
+        </td>`;
+    
+        toDoDiv.appendChild(row);
+    }
+    static deleteTodo(el){
+        if(el.id === 'delete'){
+            el.parentElement.parentElement.remove();
+        }
+    }
+    static deleteJoke(){
+        let deleteBtn = document.getElementById('#delete');
 
-        list.appendChild(row);
-        noteDiv.appendChild(list);
+        deleteBtn.onclick(UI.deleteTodo());
+        
+        document.querySelector('#toDoDiv').addEventListener('click', (e) => {
+            //remove from ui
+            UI.deleteTodo(e.target);
+            //remove from state
+            //State.removeTodo(e.target.parentElement.previousElementSibiling.textContent);
+        })
+    }
+    static removeJokeRows(){
+        let jokeRows = document.querySelectorAll('#jokeRow');
+        jokeRows.forEach((row) => {
+            row.remove();
+        })
+    }
+    static removeNoteRows(){
+        let noteRows = document.querySelectorAll('#note Row');
+        noteRows.forEach((row) => {
+            row.remove();
+        })
     }
 }
 
