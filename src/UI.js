@@ -35,7 +35,8 @@ function content(){
     btn3.innerHTML = `<i class="fa-solid fa-face-laugh-squint">Joke</i>`
     btn4.innerHTML = `<i class="fa-regular fa-star">Show</i>`;
     btn5.innerHTML = `<i class="fa-solid fa-circle-plus">New</i>`;
-    footer.innerHTML = `<i class="fa-solid fa-socks">THANK YOU ODIN PROJECT AND FONT AWESOME</i>`
+    footer.innerHTML = `<i class="fa-solid fa-socks">THANK YOU ODIN PROJECT AND FONT AWESOME. Photo by <a href="https://unsplash.com/@brutus?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Beat Schuler</a> on <a href="https://unsplash.com/s/photos/dark-aesthetic?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    </i>`
 
     header.appendChild(h1);
     dropDownContent.appendChild(btn2);

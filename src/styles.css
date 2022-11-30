@@ -3,6 +3,9 @@ html{
     color: aliceblue;
     padding: 8px;
     margin: 8px;
+    background-image: url('beat-schuler-hO-h0MkyLwY-unsplash.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .bodyDiv{
     display:flex;
@@ -81,7 +84,7 @@ footer{
     width: 100%;
     text-align: center;
     order: 4;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Molengo', Georgia, Times, serif;
     padding: 10px;
     border: 2px groove;
@@ -147,9 +150,13 @@ input[type=submit] {
     border: none;
     padding: 2px 4px;
     text-decoration: none;
-    margin: 6px 4px;    
+    margin: 6px 4px;  
+    border-radius: 5px;  
 }
-
+input[type=date]{
+    font-size: 20px;
+    border-radius: 5px;
+}
 /* table */ 
 table{
     border-style: none;
@@ -179,7 +186,6 @@ th, td {
     width: 100%;
     padding-top: 12px;
     padding-bottom: 12px;
-    box-shadow: 0 0 20px rgba(219, 211, 211, 0.15);
     text-align: right;
 }
 tr:hover td {

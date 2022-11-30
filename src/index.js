@@ -1,6 +1,7 @@
 import './styles.css';
 import {content, homeTabUI, dropDown, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv} from './UI.js';
 import {Joke, State, Formal, UI} from './classicman.js';
+//import './beat-schuler-hO-h0MkyLwY-unsplash.jpeg'
 
 function pageLoad(element){
     document.body.appendChild(element);
