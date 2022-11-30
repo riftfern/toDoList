@@ -1,5 +1,5 @@
 import './styles.css';
-import {formModal, content, homeTabUI} from './UI.js';
+import {content, homeTabUI, dropDown, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv} from './UI.js';
 import {Joke, State, Formal, UI} from './classicman.js';
 
 function pageLoad(element){
@@ -11,46 +11,68 @@ function pageLoad(element){
 
 (function init(){
     pageLoad(content());
-    pageLoad(formModal());
+    //pageLoad(formModal());
+    pageLoad(jokeModalFormDiv())
+    pageLoad(noteModalFormDiv());
+    pageLoad(showModalFormDiv());
     Formal.addJoke();
     Formal.addNote();
+    Formal.addShow();
     homeTabUI();
 })();
 
 
 
-let btn = document.getElementById('new');
+let newBtn = document.getElementById('new');
 
-let modal = document.getElementById('formModal');
 let span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function(){
-    modal.style.display = 'block';
-}
-
-span.onclick = function(){
-    modal.style.display = 'none';
-}
-window.onclick = function(event){
-    if(event.target == modal){
-        modal.style.display = 'none';
-    }
-}
-
-let btnNames = ['home', 'jokes', 'notes'];
-btnNames.forEach(btnName => {
+let modals = ['jokeForm', 'noteForm', 'showForm'];
+let btnNames = ['jokes', 'notes', 'shows'];
+btnNames.forEach((btnName) => {
     let btn = document.getElementById(btnName);
-    btn.addEventListener('click', () => {
-        if(btn.id == 'home'){
-            UI.displayJokes();
-            UI.displayNotes();
-        }else if(btn.id == 'jokes'){
-            UI.removeNoteRows();
+    btn.addEventListener('click' , () => {
+        if(btn.id == 'jokes'){
+            UI.showJokeModal();
         }else if(btn.id == 'notes'){
-            UI.removeJokeRows();
+            UI.showNoteModal();
+        }else if(btn.id == 'shows'){
+            UI.showShowModal();
         }
-    })
-})
+    });
+});
+
+newBtn.onclick = function(){
+    dropDown();
+}
+
+
+//span.onclick = function(){
+//    modal.style.display = 'none';/
+//}/
+//window.onclick = function(event){
+//    if(event.target == modal){
+//        modal.style.display = 'none';
+//    }
+//}
+
+//let btnNames = ['home', 'jokes', 'notes'];
+//btnNames.forEach(btnName => {
+//    let btn = document.getElementById(btnName);
+//    btn.addEventListener('click', () => {
+//        if(btn.id == 'home'){
+//            UI.displayJokes();
+//            UI.displayNotes();
+//        }else if(btn.id == 'jokes'){
+//            UI.removeNoteRows();
+//        }else if(btn.id == 'notes'){
+//            UI.removeJokeRows();
+//        }
+//    })
+//})
+
+
+
 
 document.querySelector('#toDoDiv').addEventListener('click', (e) => {
     UI.deleteTodo(e.target);

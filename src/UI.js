@@ -12,11 +12,16 @@ function content(){
     const btn3 = document.createElement('button');
     const btn4 = document.createElement('button');
     const btn5 = document.createElement('button');
+    const dropDownDiv = document.createElement('div');
+    const dropDownContent = document.createElement('div');
     const footer = document.createElement('footer');
     const contentDiv = document.createElement('div');
 
     bodyDiv.className = 'bodyDiv';
     contentDiv.className = 'contentDiv';
+    dropDownDiv.className = 'dropDownDiv';
+    dropDownContent.id = 'dropDownContent';
+    dropDownContent.className = 'dropDownContent'
 
     btn1.id = 'home';
     btn2.id = 'notes';
@@ -24,27 +29,23 @@ function content(){
     btn4.id = 'shows';
     btn5.id = 'new';
 
-    h1.textContent = 'Stand Up Comedy Notebook';
-    btn1.textContent = 'Home';
-    btn2.textContent = 'Notes';
-    btn3.textContent = 'Jokes';
-    btn4.textContent = 'Shows';
-    btn5.textContent = 'New';
-    footer.textContent = 'THANK YOU ODIN PROJECT AND FONT AWESOME';
-
     h1.innerHTML = `<i class="fa-solid fa-book">Stand Up Comedy NoteBook</i>`;
     btn1.innerHTML = `<i class="fa-solid fa-house">Home</i>`;
-    btn2.innerHTML = `<i class="fa-regular fa-note-sticky">Notes</i>`
-    btn3.innerHTML = `<i class="fa-solid fa-face-laugh-squint">Jokes</i>`
+    btn2.innerHTML = `<i class="fa-regular fa-note-sticky">Note</i>`
+    btn3.innerHTML = `<i class="fa-solid fa-face-laugh-squint">Joke</i>`
+    btn4.innerHTML = `<i class="fa-regular fa-star">Show</i>`;
     btn5.innerHTML = `<i class="fa-solid fa-circle-plus">New</i>`;
     footer.innerHTML = `<i class="fa-solid fa-socks">THANK YOU ODIN PROJECT AND FONT AWESOME</i>`
 
     header.appendChild(h1);
-    nav.appendChild(btn1);
-    nav.appendChild(btn2);
-    nav.appendChild(btn3);
-    //nav.appendChild(btn4);
-    nav.appendChild(btn5);
+    dropDownContent.appendChild(btn2);
+    dropDownContent.appendChild(btn3);
+    dropDownContent.appendChild(btn4);
+    dropDownDiv.appendChild(btn5);
+    dropDownDiv.appendChild(dropDownContent);
+
+    
+    nav.appendChild(dropDownDiv);
 
     contentDiv.appendChild(nav);
     contentDiv.appendChild(section);
@@ -56,9 +57,11 @@ function content(){
     return bodyDiv;
 }
 //form divs and content 
-function formModal(){
-   
-   //joke form
+function jokeModalFormDiv(){
+    const jokeModalFormDiv = document.createElement('div');
+    jokeModalFormDiv.id = 'jokeModalFormDiv';
+
+    //joke form
    const jokeFormDiv = document.createElement('div');
    jokeFormDiv.className = 'jokeFormDiv';
    const jokeForm = document.createElement('form');
@@ -91,7 +94,15 @@ function formModal(){
 
    jokeFormDiv.appendChild(jokeForm); 
 
-   //note form
+   jokeModalFormDiv.appendChild(jokeFormDiv);
+
+   return jokeModalFormDiv;
+}
+function noteModalFormDiv(){
+    const noteModalFormDiv = document.createElement('div');
+    noteModalFormDiv.id = 'noteModalFormDiv'
+
+    //note form
 
    const noteFormDiv = document.createElement('div');
    noteFormDiv.className = 'noteFormDiv';
@@ -122,32 +133,48 @@ function formModal(){
    noteForm.appendChild(noteSubmit);
 
    noteFormDiv.appendChild(noteForm);
+   noteModalFormDiv.appendChild(noteFormDiv); 
 
-   //form modal
-   const formModal =  document.createElement('div');
-   formModal.id = 'formModal';
+   return noteModalFormDiv;
+}
+function showModalFormDiv(){
+    const showModalFormDiv = document.createElement('div');
+    showModalFormDiv.id = 'showModalFormDiv';
 
-   const formModalContentDiv = document.createElement('div');
-   formModalContentDiv.className = 'formModalContentDiv';
+    //show form 
+   const showFormDiv = document.createElement('div');
+   showFormDiv.className = 'showFormDiv';
+   const showForm  = document.createElement('form');
+   showForm.innerText = 'New Show';
+   showForm.id = 'showForm';
+   showForm.setAttribute('method', 'post');
 
-   const closeSpan = document.createElement('span');
-   closeSpan.className = 'close';
-   closeSpan.innerHTML = '<button id="close"><i class="fa-regular fa-circle-xmark">Close</i></button>';
+   const date = document.createElement('input');
+   date.id = 'showDate';
+   date.setAttribute('type', 'date');
+   date.setAttribute('name', 'startDate');
+   date.setAttribute('placeholder', 'Date');
+
+   const showName = document.createElement('input');
+   showName.id = 'showName';
+   showName.setAttribute('type', 'text');
+   showName.setAttribute('name', 'showName');
+   showName.setAttribute('placeholder', 'Show Name');
+
+   const showSubmit = document.createElement('input');
+   showSubmit.id = 'showSubmit';
+   showSubmit.setAttribute('type', 'submit');
+   showSubmit.setAttribute('value', 'Submit');
+
+   showForm.appendChild(showName);
+   showForm.appendChild(date);
+   showForm.appendChild(showSubmit);
+
+   showFormDiv.appendChild(showForm);
+   showModalFormDiv.appendChild(showFormDiv);
    
-   const formModalParagraph = document.createElement('p');
-   formModalParagraph.className = 'formModalParagraph';
-   formModalParagraph.innerText = 'Choose your note type';
-
-   formModalContentDiv.appendChild(formModalParagraph);
-   formModalContentDiv.appendChild(jokeFormDiv);
-   formModalContentDiv.appendChild(noteFormDiv);
-   formModalContentDiv.appendChild(closeSpan);
-
-   formModal.appendChild(formModalContentDiv);
-   
-   return formModal;
-}   
-
+   return showModalFormDiv;
+}
 function homeTabUI(){
     const section = document.querySelector('section');
     const homeTabDiv = document.createElement('div');
@@ -162,13 +189,11 @@ function homeTabUI(){
     
     return section;
 }
-
-function noteTabUI(){
-
+function dropDown(){
+    document.getElementById('dropDownContent').classList.toggle('show');
+}
+function hideModal(modal){
+    modal.style.display = 'none';
 }
 
-function jokeTabUI(){
-    UI.displayJokes();
-}
-
-export {formModal, content, homeTabUI};
+export {content, homeTabUI, dropDown, hideModal, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv};
