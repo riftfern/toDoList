@@ -26,8 +26,14 @@ class State{
         jokes.push(joke);
         //localStorage.setItem('jokes', JSON.stringify(jokes));
     }
-    static removeJoke(){
-
+    static removeJoke(setup){
+        const jokes = State.getJokes();
+        jokes.forEach((joke, index) => {
+            if(joke.setup === setup){
+                jokes.splice(index, 1);
+            }
+        });
+        //localStorage.setItem('jokes', JSON.stringify(jokes));
     }
     static getNotes(){
         let notes = [];

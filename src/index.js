@@ -1,14 +1,12 @@
 import './styles.css';
 import {content, homeTabUI, dropDown, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv} from './UI.js';
-import {Joke, State, Formal, UI} from './classicman.js';
+import {Formal, UI} from './classicman.js';
 //import './beat-schuler-hO-h0MkyLwY-unsplash.jpeg'
 
 function pageLoad(element){
     document.body.appendChild(element);
     return document.body;
 }
-
-
 
 (function init(){
     pageLoad(content());
@@ -21,8 +19,6 @@ function pageLoad(element){
     Formal.addShow();
     homeTabUI();
 })();
-
-
 
 let newBtn = document.getElementById('new');
 
@@ -48,33 +44,7 @@ newBtn.onclick = function(){
 }
 
 
-//span.onclick = function(){
-//    modal.style.display = 'none';/
-//}/
-//window.onclick = function(event){
-//    if(event.target == modal){
-//        modal.style.display = 'none';
-//    }
-//}
-
-//let btnNames = ['home', 'jokes', 'notes'];
-//btnNames.forEach(btnName => {
-//    let btn = document.getElementById(btnName);
-//    btn.addEventListener('click', () => {
-//        if(btn.id == 'home'){
-//            UI.displayJokes();
-//            UI.displayNotes();
-//        }else if(btn.id == 'jokes'){
-//            UI.removeNoteRows();
-//        }else if(btn.id == 'notes'){
-//            UI.removeJokeRows();
-//        }
-//    })
-//})
-
-
-
-
 document.querySelector('#toDoDiv').addEventListener('click', (e) => {
     UI.deleteTodo(e.target);
+
 });
