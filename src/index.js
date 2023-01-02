@@ -1,50 +1,50 @@
 import './styles.css';
-import {content, homeTabUI, dropDown, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv} from './UI.js';
-import {Formal, UI} from './classicman.js';
-//import './beat-schuler-hO-h0MkyLwY-unsplash.jpeg'
+import {
+  content, homeTabUI, dropDown, jokeModalFormDiv, noteModalFormDiv, showModalFormDiv,
+} from './shell';
+import Formal from './components/Formal';
+import UI from './components/UI';
 
-function pageLoad(element){
-    document.body.appendChild(element);
-    return document.body;
+function pageLoad(element) {
+  document.body.appendChild(element);
+  return document.body;
 }
 
-(function init(){
-    pageLoad(content());
-    //pageLoad(formModal());
-    pageLoad(jokeModalFormDiv())
-    pageLoad(noteModalFormDiv());
-    pageLoad(showModalFormDiv());
-    Formal.addJoke();
-    Formal.addNote();
-    Formal.addShow();
-    homeTabUI();
-})();
+(function init() {
+  pageLoad(content());
+  // pageLoad(formModal());
+  pageLoad(jokeModalFormDiv());
+  pageLoad(noteModalFormDiv());
+  pageLoad(showModalFormDiv());
+  Formal.addJoke();
+  Formal.addNote();
+  Formal.addShow();
+  homeTabUI();
+}());
 
-let newBtn = document.getElementById('new');
+const newBtn = document.getElementById('new');
 
-let span = document.getElementsByClassName("close")[0];
+// const span = document.getElementsByClassName('close')[0];
 
-let modals = ['jokeForm', 'noteForm', 'showForm'];
-let btnNames = ['jokes', 'notes', 'shows'];
+// const modals = ['jokeForm', 'noteForm', 'showForm'];
+const btnNames = ['jokes', 'notes', 'shows'];
 btnNames.forEach((btnName) => {
-    let btn = document.getElementById(btnName);
-    btn.addEventListener('click' , () => {
-        if(btn.id == 'jokes'){
-            UI.showJokeModal();
-        }else if(btn.id == 'notes'){
-            UI.showNoteModal();
-        }else if(btn.id == 'shows'){
-            UI.showShowModal();
-        }
-    });
+  const btn = document.getElementById(btnName);
+  btn.addEventListener('click', () => {
+    if (btn.id === 'jokes') {
+      UI.showJokeModal();
+    } else if (btn.id === 'notes') {
+      UI.showNoteModal();
+    } else if (btn.id === 'shows') {
+      UI.showShowModal();
+    }
+  });
 });
 
-newBtn.onclick = function(){
-    dropDown();
-}
-
+newBtn.onclick = () => {
+  dropDown();
+};
 
 document.querySelector('#toDoDiv').addEventListener('click', (e) => {
-    UI.deleteTodo(e.target);
-
+  UI.deleteTodo(e.target);
 });
